@@ -16,7 +16,7 @@ const extractSass = new ExtractTextPlugin({
 
 const config = {
   entry: {
-    app: './src/js/index.js'
+    app: './src/index.js'
   },
   output: {
     filename: 'bundle.js',
