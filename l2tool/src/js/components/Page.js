@@ -13,7 +13,12 @@ class Page extends React.Component {
   render() {
     return (
       <section className={styles["page-container"]}>
-        {this.props.data}
+        {
+          this.props.children &&
+          this.props.children.map((item, index) => {
+            return <div key={index} >{item}</div>
+          })
+        }
       </section>
     );
   }
