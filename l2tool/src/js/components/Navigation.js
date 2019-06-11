@@ -1,5 +1,6 @@
 
 import React from 'react';
+import logo from './../../images/logo.png';
 import styles from './../../sass/styles.scss';
 
 function NavigationItem(props) {
@@ -9,6 +10,7 @@ function NavigationItem(props) {
 function Navigation(props) {
   return (
     <nav className={styles["nav-container"]}>
+      <img className={styles["nav-container__image"]} src={logo} alt="Logo" />
       { props.sections.map((item, i) => <NavigationItem key={i} name={item} clickHandler={props.navigationClick}/>) }
     </nav>
   );

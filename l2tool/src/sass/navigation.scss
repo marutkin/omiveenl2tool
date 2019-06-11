@@ -6,7 +6,7 @@
   justify-content: flex-start;
   align-items: center;
 
-  height: 40px;
+  height: 75px;
   background: #333;
 
   &__item {
@@ -15,7 +15,7 @@
     color: #fff;
     background: #9891f9b3;
     width: 90px;
-    height: 40px;
+    height: 75px;
 
     display: flex;
     justify-content: center;
@@ -25,6 +25,12 @@
       background: #5d54dceb;
     }
 
+  }
+
+  &__image {
+    width: 100%;
+    max-width: 227px;
+    height: auto;
   }
 
 }
