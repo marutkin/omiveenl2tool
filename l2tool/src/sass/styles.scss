@@ -1,8 +1,11 @@
 
-* {
-  margin: 0;
-  padding: 0;
-}
-.main-container {
-  font-size: 14px;
+@import './main.scss';
+@import './navigation.scss';
+@import './page.scss';
+@import './Entities/person.scss';
+
+@import url('https://fonts.googleapis.com/css?family=Comfortaa&display=swap');
+
+body {
+  font-family: 'Comfortaa', cursive;
 }
