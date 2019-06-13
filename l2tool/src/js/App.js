@@ -31,23 +31,25 @@ class App extends React.Component {
         <Page data={this.state.currentPage}>
           {
             this.state.currentPage == sectionNames[0] &&
-            <Person data={testdata}/>
+            <div className={styles["animated"]}>
+              <Person  data={testdata}/>
+            </div>
           }
           {
             this.state.currentPage == sectionNames[1] &&
-            <div>
+            <div className={styles["animated"]} >
               Default BLACK LIST
             </div>
           }
           {
             this.state.currentPage == sectionNames[2] &&
-            <div>
+            <div className={styles["animated"]} >
               Default GEAR
             </div>
           }
           {
             this.state.currentPage == sectionNames[3] &&
-            <div>
+            <div className={styles["animated"]} >
               Default EVENTS
             </div>
           }

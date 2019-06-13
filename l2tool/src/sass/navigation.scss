@@ -33,5 +33,9 @@
     height: auto;
   }
 
-}
+  &__item,
+  &__image {
+    user-select: none;
+  }
 
+}
