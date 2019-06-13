@@ -3,3 +3,9 @@
 @import './navigation.scss';
 @import './page.scss';
 @import './Entities/person.scss';
+
+@import url('https://fonts.googleapis.com/css?family=Comfortaa&display=swap');
+
+body {
+  font-family: 'Comfortaa', cursive;
+}

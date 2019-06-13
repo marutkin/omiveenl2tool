@@ -15,13 +15,39 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentPage: sectionNames[0]
+      currentPage: sectionNames[0],
+      prevPage: null
     };
     this.navigationClick = this.navigationClick.bind(this);
   }
 
-  navigationClick(data) {
-    this.setState({currentPage: data});
+  handleNavActivation(elem, type) {
+    const activeStyling = styles["nav-container__item--active"];
+    if (type === 'set') {
+      elem.classList.add(activeStyling);
+    } else {
+      elem.classList.remove(activeStyling);
+    }
+  }
+
+  navigationClick(data,e) {
+
+    const tab = e.currentTarget;
+
+    if (tab) {
+
+      if (this.state.prevPage) {
+        this.handleNavActivation(this.state.prevPage, 'unset');
+      } else {
+        var prevPage = document.querySelector("."+styles["nav-container__item--active"])
+        this.handleNavActivation(prevPage, 'unset');
+      }
+
+      this.handleNavActivation(tab, 'set');
+
+    }
+
+    this.setState({currentPage: data, prevPage: tab});
   }
 
   render() {

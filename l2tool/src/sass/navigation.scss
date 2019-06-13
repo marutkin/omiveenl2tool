@@ -14,15 +14,21 @@
     cursor: pointer;
     color: #fff;
     background: #9891f9b3;
-    width: 90px;
+    width: 110px;
     height: 75px;
 
     display: flex;
     justify-content: center;
     align-items: center;
 
+    text-transform: uppercase;
+
     &:hover {
       background: #5d54dceb;
+    }
+
+    &--active {
+      background: #455f7f;
     }
 
   }
