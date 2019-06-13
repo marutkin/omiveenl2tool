@@ -1,33 +1,5 @@
 
+@import './main.scss';
 @import './navigation.scss';
+@import './page.scss';
 @import './Entities/person.scss';
-
-// Reset
-* {
-  margin: 0;
-  padding: 0;
-}
-
-// Main
-.main-container {
-
-  font-size: 14px;
-  max-width: 1024px;
-  margin: 0 auto;
-
-  height: 100vh;
-  background: #959fa730;
-
-}
-
-// Helpers
-.animated {
-  -webkit-animation: fadeEffect .5s;
-  animation: fadeEffect .5s;
-}
-
-@keyframes fadeEffect {
-  from {opacity: 0;}
-  to {opacity: 1;}
-}
-

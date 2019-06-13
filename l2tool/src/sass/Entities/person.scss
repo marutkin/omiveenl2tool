@@ -1,7 +1,15 @@
 
 .person {
-  color: #000;
+
+  width: 150px;
+  border: 1px solid #80808075;
+
+  margin: 10px;
+
   &__row {
     margin: 5px;
+    margin: 10px;
+
+    background-color: #dfe0ff;
   }
 }
