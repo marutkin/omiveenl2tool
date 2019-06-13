@@ -44,4 +44,15 @@
     user-select: none;
   }
 
+  @media (max-width: 500px) {
+
+    &__item {
+      width: 100%;
+      font-size: .7em;
+    }
+
+    &__image {
+      display: none;
+    }
+  }
 }
