@@ -64,19 +64,19 @@ class App extends React.Component {
           {
             this.state.currentPage == sectionNames[1] &&
             <div className={styles["animated"]} >
-              Default BLACK LIST
+              {sectionNames[1]}
             </div>
           }
           {
             this.state.currentPage == sectionNames[2] &&
             <div className={styles["animated"]} >
-              Default GEAR
+              {sectionNames[2]}
             </div>
           }
           {
             this.state.currentPage == sectionNames[3] &&
             <div className={styles["animated"]} >
-              Default EVENTS
+              {sectionNames[3]}
             </div>
           }
         </Page>
