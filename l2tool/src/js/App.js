@@ -16,7 +16,8 @@ class App extends React.Component {
     super(props);
     this.state = {
       currentPage: sectionNames[0],
-      prevPage: null
+      prevPage: null,
+      isLoading: true
     };
     this.navigationClick = this.navigationClick.bind(this);
   }
@@ -50,11 +51,17 @@ class App extends React.Component {
     this.setState({currentPage: data, prevPage: tab});
   }
 
+  componentDidMount() {
+    this.setState({isLoading: false})
+  }
+
   render() {
     return (
       <main className={styles["main-container"]}>
         <Navigation navigationClick={this.navigationClick} sections={sectionNames} />
-        <Page data={this.state.currentPage}>
+        {
+          !this.state.isLoading &&
+          <Page data={this.state.currentPage}>
           {
             this.state.currentPage == sectionNames[0] &&
             <div className={styles["animated"]}>
@@ -79,7 +86,9 @@ class App extends React.Component {
               {sectionNames[3]}
             </div>
           }
-        </Page>
+          </Page>
+        }
+
       </main>
     );
   }
