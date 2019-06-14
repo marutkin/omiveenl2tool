@@ -1,6 +1,6 @@
 
-import React from 'react';
-import styles from './../../sass/styles.scss';
+import React from "react";
+import styles from "../../sass/styles.scss";
 
 class Page extends React.Component {
   constructor(props) {
@@ -16,7 +16,7 @@ class Page extends React.Component {
         {
           this.props.children &&
           this.props.children.map((item, index) => {
-            return <div key={index} >{item}</div>
+            return <div key={index} >{ item }</div>;
           })
         }
       </section>

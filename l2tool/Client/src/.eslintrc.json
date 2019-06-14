@@ -1,0 +1,50 @@
+{
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaVersion": 2018,
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "plugins": [
+    "react"
+  ],
+  "env": {
+    "node": true,
+    "browser": true
+  },
+  "settings": {
+    "react": {
+      "pragma": "h",
+      "version": "16.3"
+    }
+  },
+  "rules": {
+    "react/self-closing-comp": 2,
+    "react/prefer-es6-class": 2,
+    "react/prefer-stateless-function": 2,
+    "react/no-string-refs": 2,
+    "react/require-render-return": 2,
+    "react/no-find-dom-node": 2,
+    "react/no-is-mounted": 2,
+    "react/no-access-state-in-setstate": 2,
+    "react/no-did-mount-set-state": 2,
+    "react/no-direct-mutation-state": 2,
+    "react/no-typos": 2,
+
+    "react/jsx-boolean-value": [2, "never"],
+    "react/jsx-no-bind": [2, { "ignoreRefs": true }],
+    "react/jsx-no-duplicate-props": 2,
+    "react/jsx-no-comment-textnodes": 2,
+    "react/jsx-closing-bracket-location": 2,
+    "react/jsx-curly-spacing": [2, {
+      "when": "never",
+      "children": { "when": "always" }
+    }],
+    "react/jsx-tag-spacing": 2,
+    "react/jsx-no-undef": 2,
+    "react/jsx-uses-react": 2,
+    "react/jsx-uses-vars": 2
+  }
+
+}
