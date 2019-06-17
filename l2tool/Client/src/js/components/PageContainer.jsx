@@ -2,17 +2,17 @@
 import React from "react";
 import styles from "../../sass/styles.scss";
 
-class Page extends React.Component {
+class PageContainer extends React.Component {
   constructor(props) {
     super(props);
   }
 
   render() {
-    const { isLoading, children } = this.props;
+    const { children } = this.props;
     return (
       <section className={styles["page-container"]}>
         {
-          isLoading && children && children.map
+          children && children.map
           && children.map((item, index) => {
             return <div key={index} >{ item }</div>;
           })
@@ -23,4 +23,4 @@ class Page extends React.Component {
   }
 }
 
-export default Page;
+export default PageContainer;

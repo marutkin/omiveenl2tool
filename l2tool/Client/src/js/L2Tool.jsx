@@ -1,7 +1,7 @@
 
 import React from "react";
 import Navigation from "./components/Navigation.jsx";
-import Page from "./components/Page.jsx";
+import PageContainer from "./components/PageContainer.jsx";
 import OnlinePage from "./components/PageTypes/OnlinePage.jsx";
 import GearPage from "./components/PageTypes/GearPage.jsx";
 import BlackListPage from "./components/PageTypes/BlackListPage.jsx";
@@ -21,8 +21,7 @@ class L2Tool extends React.Component {
     super(props);
     this.state = {
       currentPage: SECTION_NAMES[0],
-      prevPage: null,
-      isLoading: true
+      prevPage: null
     };
     this.handleNavigationClick = this.handleNavigationClick.bind(this);
   }
@@ -55,10 +54,6 @@ class L2Tool extends React.Component {
     }
   }
 
-  toggleLoadingState(isLoading) {
-    this.setState({ isLoading });
-  }
-
   setFirstTab() {
     const prevPage = document.querySelector(`.${NAV_ITEM_ACITVE_CLASS}`);
     this.setState({ prevPage });
@@ -66,7 +61,6 @@ class L2Tool extends React.Component {
 
   componentDidMount() {
     this.setFirstTab();
-    this.toggleLoadingState(true);
   }
 
   render() {
@@ -75,9 +69,9 @@ class L2Tool extends React.Component {
 
         <Navigation clickHandler={this.handleNavigationClick} sections={SECTION_NAMES} />
 
-        <Page isLoading = {this.state.isLoading} data={this.state.currentPage}>
+        <PageContainer>
           { this.getPageContent() }
-        </Page>
+        </PageContainer>
 
       </main>
     );
