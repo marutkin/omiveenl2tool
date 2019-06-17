@@ -1,16 +1,16 @@
 
 import React from "react";
+
 import Navigation from "./components/Navigation.jsx";
 import PageContainer from "./components/PageContainer.jsx";
+
 import OnlinePage from "./components/PageTypes/OnlinePage.jsx";
 import GearPage from "./components/PageTypes/GearPage.jsx";
 import BlackListPage from "./components/PageTypes/BlackListPage.jsx";
 import EventsPage from "./components/PageTypes/EventsPage.jsx";
-import Person from "./components/Entities/Person.jsx";
+
 import { getText } from "./lib/helper";
 import styles from "../sass/styles.scss";
-
-import testdata from "../settings/testdata.json";
 
 const SECTION_NAMES = getText("titles");
 const NAV_ITEM_ACITVE_CLASS = styles["nav-container__item--active"];
@@ -44,23 +44,19 @@ class L2Tool extends React.Component {
     // TODO [DM]: FIX navigation logic.
     switch (this.state.currentPage) {
       case SECTION_NAMES[0]:
-        return <OnlinePage> <Person data={testdata} /> </OnlinePage>;
+        return <OnlinePage />;
       case SECTION_NAMES[1]:
-        return <BlackListPage> <div>BlackList</div> </BlackListPage>;
+        return <BlackListPage />;
       case SECTION_NAMES[2]:
-        return <GearPage> <div>GearPage</div> </GearPage>;
+        return <GearPage />;
       case SECTION_NAMES[3]:
-        return <EventsPage> <div>EventsPage</div> </EventsPage>;
+        return <EventsPage />;
     }
   }
 
-  setFirstTab() {
+  componentWillMount() {
     const prevPage = document.querySelector(`.${NAV_ITEM_ACITVE_CLASS}`);
     this.setState({ prevPage });
-  }
-
-  componentDidMount() {
-    this.setFirstTab();
   }
 
   render() {

@@ -1,19 +1,25 @@
 
 import React from "react";
+import Person from "./../Entities/Person.jsx";
 import styles from "../../../sass/styles.scss";
 
+import testdata from "./../../../settings/testdata.json";
+
 class OnlinePage extends React.Component {
-  constructor(props) {
-    super(props);
+
+  fetchPersonData() {
+    // TODO [KD]: Provide BE Api.
+    return testdata;
   }
 
   render() {
     return (
       <div className={styles.animated}>
-        { this.props.children }
+        <Person data={this.fetchPersonData()} />
       </div>
     );
   }
+
 }
 
 export default OnlinePage;

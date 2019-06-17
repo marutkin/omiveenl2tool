@@ -1,14 +1,14 @@
 
 {
-  "name": "Test Name",
-  "nikcname": "Tenikcnamest",
-  "lvl": "Testlvl",
-  "online": "Testonline",
-  "Afk": "TestAfk",
-  "Available_until": "TestAvailable_until",
-  "Party_name": "TestParty_name",
-  "Party_leader_name": "TestParty_leader_name",
-  "Impact points": "Testpoints",
-  "Realized points": "TestRealized",
-  "Priority": "TestPriority"
+  "name": "Omi",
+  "nikcname": "Рглор",
+  "lvl": "71",
+  "online": "Online",
+  "Afk": "No",
+  "Available_until": "Unknown",
+  "Party_name": "Unknown",
+  "Party_leader_name": "Veen",
+  "Impact points": "0",
+  "Realized points": "0",
+  "Priority": "High"
   }
