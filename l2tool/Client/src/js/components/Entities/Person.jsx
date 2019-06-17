@@ -8,16 +8,38 @@ function formatKey(keyString) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-export default function Person(props) {
-  const { data } = props;
-  return (
-    <div className={styles.person}>
-      {
-        Object.keys(data).map((key) => (
-          <div key={key} className={styles.person__row}>
-            { formatKey(key) } : { data[key] }
-          </div>))
-      }
-    </div>
-  );
+class Person extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      isOpen: false
+    };
+  }
+
+  render() {
+    const { data } = this.props;
+    return (
+      <div className={styles.person}>
+        {
+          Object.keys(data).map((key, index) => (
+            <div key={index} className={styles.person__row}>
+              {
+                index > 4 ?
+                  <div className={styles.person__head}>
+                    { formatKey(key) } : { data[key] }
+                  </div>
+                  : <div className={styles.person__body}>
+                    { formatKey(key) } : { data[key] }
+                  </div>
+              }
+            </div>
+          ))
+        }
+      </div>
+    );
+  }
+
 }
+
+export default Person;

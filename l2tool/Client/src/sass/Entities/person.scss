@@ -12,6 +12,14 @@
     background-color: #dfe0ff;
   }
 
+  &__head {
+    color: red;
+  }
+
+  &__body {
+    color: blue;
+  }
+
   @media (max-width: 500px) {
     max-width: 100%;
   }
