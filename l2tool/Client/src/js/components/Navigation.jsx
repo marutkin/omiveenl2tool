@@ -5,18 +5,15 @@ import styles from "../../sass/styles.scss";
 
 function NavigationItem(props) {
 
-  let navClass = styles["nav-container__item"];
+  const [ itemStyle, itemStyleActive ] = [ styles["nav-container__item"], styles["nav-container__item--active"] ];
+  const navClass = props.isFirst ? `${itemStyle} ${itemStyleActive}` : itemStyle;
 
-  if (props.isFirst) {
-    navClass += ` ${styles["nav-container__item--active"]}`;
-  }
-
-  function clickHandler(e) {
+  function handleNavItemClick(e) {
     props.clickHandler(props.name, e);
   }
 
   return (
-    <div onClick={clickHandler} className={navClass}>
+    <div onClick={handleNavItemClick} className={navClass}>
       { props.name }
     </div>);
 
@@ -30,12 +27,13 @@ class Navigation extends React.Component {
   }
 
   render() {
+    const { clickHandler, sections } = this.props;
     return (
       <nav className={styles["nav-container"]}>
         <img className={styles["nav-container__image"]} src={logo} alt="Logo" />
         {
-          this.props.sections.map((item, index) =>
-            <NavigationItem isFirst={!index} key={index} name={item} clickHandler={this.props.navigationClick} />)
+          sections.map((item, index) =>
+            <NavigationItem isFirst={!index} key={index} name={item} clickHandler={clickHandler} />)
         }
       </nav>
     );

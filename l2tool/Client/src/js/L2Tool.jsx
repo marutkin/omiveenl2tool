@@ -12,77 +12,73 @@ import styles from "../sass/styles.scss";
 
 import testdata from "../settings/testdata.json";
 
-const sectionNames = getText("titles");
+const SECTION_NAMES = getText("titles");
+const NAV_ITEM_ACITVE_CLASS = styles["nav-container__item--active"];
 
 class L2Tool extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      currentPage: sectionNames[0],
+      currentPage: SECTION_NAMES[0],
       prevPage: null,
       isLoading: true
     };
-    this.navigationClick = this.navigationClick.bind(this);
+    this.handleNavigationClick = this.handleNavigationClick.bind(this);
   }
 
-  handleNavActivation(elem, type) {
-    const activeStyling = styles["nav-container__item--active"];
-    if (type === "set") {
-      elem.classList.add(activeStyling);
-    } else {
-      elem.classList.remove(activeStyling);
-    }
+  toggleNavigationState(elem, type) {
+    return type === "set" ? elem.classList.add(NAV_ITEM_ACITVE_CLASS) : elem.classList.remove(NAV_ITEM_ACITVE_CLASS);
   }
 
-  navigationClick(data, e) {
+  handleNavigationClick(data, e) {
 
     const tab = e.currentTarget;
+    const prevPage = document.querySelector(`.${NAV_ITEM_ACITVE_CLASS}`);
 
-    if (tab) {
-      if (this.state.prevPage) {
-        this.handleNavActivation(this.state.prevPage, "unset");
-      } else {
-        const prevPage = document.querySelector(`.${styles["nav-container__item--active"]}`);
-        this.handleNavActivation(prevPage, "unset");
-      }
-      this.handleNavActivation(tab, "set");
-    }
+    this.toggleNavigationState(prevPage, "unset");
+    this.toggleNavigationState(tab, "set");
     this.setState({ currentPage: data, prevPage: tab });
-
-  }
-
-  setLoading() {
-    this.setState({ isLoading: false });
   }
 
   getPageContent() {
+    // TODO [DM]: FIX navigation logic.
     switch (this.state.currentPage) {
-      case sectionNames[0]:
+      case SECTION_NAMES[0]:
         return <OnlinePage> <Person data={testdata} /> </OnlinePage>;
-      case sectionNames[1]:
+      case SECTION_NAMES[1]:
         return <BlackListPage> <div>BlackList</div> </BlackListPage>;
-      case sectionNames[2]:
+      case SECTION_NAMES[2]:
         return <GearPage> <div>GearPage</div> </GearPage>;
-      case sectionNames[3]:
+      case SECTION_NAMES[3]:
         return <EventsPage> <div>EventsPage</div> </EventsPage>;
     }
   }
 
+  toggleLoadingState(isLoading) {
+    this.setState({ isLoading });
+  }
+
+  setFirstTab() {
+    const prevPage = document.querySelector(`.${NAV_ITEM_ACITVE_CLASS}`);
+    this.setState({ prevPage });
+  }
+
   componentDidMount() {
-    this.setLoading();
+    this.setFirstTab();
+    this.toggleLoadingState(true);
   }
 
   render() {
     return (
       <main className={styles["main-container"]}>
-        <Navigation navigationClick={this.navigationClick} sections={sectionNames} />
-        {
-          !this.state.isLoading &&
-          <Page data={this.state.currentPage}>
-            { this.getPageContent() }
-          </Page>
-        }
+
+        <Navigation clickHandler={this.handleNavigationClick} sections={SECTION_NAMES} />
+
+        <Page isLoading = {this.state.isLoading} data={this.state.currentPage}>
+          { this.getPageContent() }
+        </Page>
+
       </main>
     );
   }

@@ -8,14 +8,15 @@ class Page extends React.Component {
   }
 
   render() {
+    const { isLoading, children } = this.props;
     return (
       <section className={styles["page-container"]}>
         {
-          this.props.children && this.props.children.map
-          && this.props.children.map((item, index) => {
+          isLoading && children && children.map
+          && children.map((item, index) => {
             return <div key={index} >{ item }</div>;
           })
-          || this.props.children
+          || children
         }
       </section>
     );
