@@ -2,22 +2,44 @@
 .person {
   $p: &;
   width: auto;
-  max-width: 31.7%;
   border: 1px solid #80808075;
+  background-color: #dfe0ff;
+  display: flex;
+  flex-flow: row nowrap;
 
   &__row {
     margin: 5px;
     margin: 10px;
 
-    background-color: #dfe0ff;
   }
 
-  &__head {
-    color: red;
+  &__head,
+  &__head-item {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+  }
+
+  &__head-item {
+    margin: 0 25px;
+  }
+
+  &__head-image {
+    width: 100%;
+    max-width: 25px;
+    height: auto;
+    padding: 10px;
   }
 
   &__body {
     display: none;
+    border-top: 1px solid gray;
+  }
+
+  &__body-item {
+    margin: 5px;
   }
 
   &--expand {

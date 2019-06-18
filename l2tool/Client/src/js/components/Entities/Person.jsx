@@ -3,10 +3,9 @@
 import React from "react";
 import styles from "../../../sass/styles.scss";
 
-function formatKey(keyString) {
-  const string = keyString.match(/[a-zA-Z]+/g).join(" ").toLocaleLowerCase();
-  return string.charAt(0).toUpperCase() + string.slice(1);
-}
+import onlineLogo from "./../../../images/EntitiesAssets/online.png";
+import offlineLogo from "./../../../images/EntitiesAssets/offline.png";
+import afkLogo from "./../../../images/EntitiesAssets/afk.png";
 
 class Person extends React.Component {
 
@@ -19,6 +18,46 @@ class Person extends React.Component {
 
   }
 
+  getPerson(data) {
+    const statusLogo = data.online ? onlineLogo : offlineLogo;
+    return (
+      <div className={styles.person__row}>
+        <div className={styles.person__head}>
+          <div className={styles["person__head-item"]}>
+            <img className={styles["person__head-image"]} src={statusLogo} alt="Status Logo" />
+          </div>
+          <div className={styles["person__head-item"]}>{ data.nickname } { data.lvl }</div>
+          <div className={styles["person__head-item"]}>{ data.name }</div>
+          <div className={styles["person__body-item"]}>
+            { data.afk && <img className={styles["person__head-image"]} src={afkLogo} alt="AFK Logo" /> }
+          </div>
+          <div>
+            { this.state.isOpen ? "\u25B2" : "\u25BC" }
+          </div>
+        </div>
+        <div className={styles.person__body}>
+          <div className={styles["person__body-item"]}>
+            AvailableUntil: { data.availableUntil }
+          </div>
+          <div className={styles["person__body-item"]}>
+            Impact: { data.impactPoints }
+          </div>
+          <div className={styles["person__body-item"]}>
+            Realized: { data.realizedPoints }
+          </div>
+          <div className={styles["person__body-item"]}>
+            Party name: { data.partyName }
+          </div>
+          <div className={styles["person__body-item"]}>
+            Party leader name: { data.partyLeaderName }
+          </div>
+          <div className={styles["person__body-item"]}>
+            Priority: { data.priority }
+          </div>
+        </div>
+      </div>);
+  }
+
   toggle() {
     this.setState((prevState) => {
       return { isOpen: !prevState.isOpen };
@@ -27,24 +66,10 @@ class Person extends React.Component {
 
   render() {
     const { data } = this.props;
-    const styleClass = this.state.isOpen ? styles.person : `${styles.person} ${styles["person--expand"]}`;
+    const styleClass = !this.state.isOpen ? styles.person : `${styles.person} ${styles["person--expand"]}`;
     return (
       <div onClick={this.toggle} className={styleClass}>
-        {
-          Object.keys(data).map((key, index) => (
-            <div key={index} className={styles.person__row}>
-              {
-                index < 4 ?
-                  <div className={styles.person__head}>
-                    { formatKey(key) } : { data[key] }
-                  </div>
-                  : <div className={styles.person__body}>
-                    { formatKey(key) } : { data[key] }
-                  </div>
-              }
-            </div>
-          ))
-        }
+        { this.getPerson(data) }
       </div>
     );
   }
