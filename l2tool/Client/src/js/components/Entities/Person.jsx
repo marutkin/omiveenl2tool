@@ -15,17 +15,26 @@ class Person extends React.Component {
     this.state = {
       isOpen: false
     };
+    this.toggle = this.toggle.bind(this);
+
+  }
+
+  toggle() {
+    this.setState((prevState) => {
+      return { isOpen: !prevState.isOpen };
+    });
   }
 
   render() {
     const { data } = this.props;
+    const styleClass = this.state.isOpen ? styles.person : `${styles.person} ${styles["person--expand"]}`;
     return (
-      <div className={styles.person}>
+      <div onClick={this.toggle} className={styleClass}>
         {
           Object.keys(data).map((key, index) => (
             <div key={index} className={styles.person__row}>
               {
-                index > 4 ?
+                index < 4 ?
                   <div className={styles.person__head}>
                     { formatKey(key) } : { data[key] }
                   </div>

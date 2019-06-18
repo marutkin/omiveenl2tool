@@ -15,7 +15,7 @@ class OnlinePage extends React.Component {
   render() {
     const persons = this.fetchPersonData();
     return (
-      <div className={`${styles.animated} ${styles.flex}`}>
+      <div className={`${styles.animated} ${styles.flex} ${styles.flex__column}`}>
         {
           Object.keys(persons).map((key, index) => <Person key={index} data={persons[key]} />)
         }

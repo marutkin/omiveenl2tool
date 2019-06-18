@@ -12,7 +12,10 @@ body {
 
 .flex {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
   flex-wrap: wrap;
+
+  &__column {
+    flex-direction: column;
+  }
 }
+
