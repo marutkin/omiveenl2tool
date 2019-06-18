@@ -9,8 +9,6 @@
 
   &__row {
     margin: 5px;
-    margin: 10px;
-
   }
 
   &__head,
@@ -22,20 +20,35 @@
     user-select: none;
   }
 
-  &__head-item {
+  &__head-item:first {
     margin: 0 25px;
+  }
+
+  &__head-item,
+  &__head-item-lvl {
+    margin: 0 12px;
+  }
+
+  &__head-item-lvl {
+    display: block;
+    border: 2px solid #b15a13ed;
+    padding: 4px 6px 2px;
+    line-height: 1;
+    border-radius: 15%;
   }
 
   &__head-image {
     width: 100%;
     max-width: 25px;
-    height: auto;
+    max-height: 45px;
     padding: 10px;
   }
 
   &__body {
     display: none;
-    border-top: 1px solid gray;
+    opacity: 0;    
+    transition: opacity 2s ease-in-out;
+    border-top: 1px solid rgb(8, 6, 6);
   }
 
   &__body-item {
@@ -45,6 +58,7 @@
   &--expand {
     #{$p}__body {
       display: block;
+      opacity: 1;
     }
   }
 

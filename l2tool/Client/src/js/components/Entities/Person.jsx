@@ -19,22 +19,25 @@ class Person extends React.Component {
   }
 
   getPerson(data) {
-    const statusLogo = data.online ? onlineLogo : offlineLogo;
+    const statusLogo = data.status === "online" ? onlineLogo
+      : data.status === "afk" ? afkLogo : offlineLogo;
     return (
       <div className={styles.person__row}>
+
         <div className={styles.person__head}>
+          <div className={styles["person__head-item"]}>
+            { this.state.isOpen ? "\u25B2" : "\u25BC" }
+          </div>
           <div className={styles["person__head-item"]}>
             <img className={styles["person__head-image"]} src={statusLogo} alt="Status Logo" />
           </div>
-          <div className={styles["person__head-item"]}>{ data.nickname } { data.lvl }</div>
+          <div className={styles["person__head-item"]}>
+            <p className={styles["person__head-item-lvl"]}>{ data.lvl }</p>
+            <strong> { data.nickname }</strong>
+          </div>
           <div className={styles["person__head-item"]}>{ data.name }</div>
-          <div className={styles["person__body-item"]}>
-            { data.afk && <img className={styles["person__head-image"]} src={afkLogo} alt="AFK Logo" /> }
-          </div>
-          <div>
-            { this.state.isOpen ? "\u25B2" : "\u25BC" }
-          </div>
         </div>
+
         <div className={styles.person__body}>
           <div className={styles["person__body-item"]}>
             AvailableUntil: { data.availableUntil }
@@ -55,6 +58,7 @@ class Person extends React.Component {
             Priority: { data.priority }
           </div>
         </div>
+
       </div>);
   }
 
