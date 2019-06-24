@@ -8,11 +8,11 @@
 
   height: 75px;
   background: #333;
-  color: white;
 
   &__item {
 
     cursor: pointer;
+    text-decoration: none;
     color: #fff;
     background: #52515db3;
     width: 110px;

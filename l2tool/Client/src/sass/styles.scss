@@ -5,17 +5,3 @@
 @import './Entities/person.scss';
 
 @import url('https://fonts.googleapis.com/css?family=Comfortaa&display=swap');
-
-body {
-  font-family: 'Comfortaa', cursive;
-}
-
-.flex {
-  display: flex;
-  flex-wrap: wrap;
-
-  &__column {
-    flex-direction: column;
-  }
-}
-

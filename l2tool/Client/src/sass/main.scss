@@ -5,6 +5,11 @@
   padding: 0;
 }
 
+body {
+  font-family: 'Comfortaa', cursive;
+  background-color: rgba(12, 12, 12, 0.795);
+}
+
 // Main
 .main-container {
 
@@ -14,11 +19,18 @@
   max-width: 1024px;
   margin: 0 auto;
 
-  background-color: rgba(12, 12, 12, 0.795);
-
 }
 
 // Helpers
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+
+  &__column {
+    flex-direction: column;
+  }
+}
+
 .animated {
   -webkit-animation: fadeEffect .5s;
   animation: fadeEffect .5s;
